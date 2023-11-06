@@ -1,6 +1,7 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
 import springApi from '../api';
+import { useNavigate } from 'react-router-dom';
 // const authURL = "http://localhost:8080/auth"
 
 export const SignIn = () => {
@@ -33,7 +34,7 @@ export const SignIn = () => {
             const { data } = await springApi.post("/auth", {}, { auth: user})
             localStorage.setItem("token", data)
             setSignInStatus("Access has been granted.")
-           
+            navigate("/directors")
         } catch (error) {
             localStorage.setItem("token", "")
             setSignInStatus("Access has not been granted.")
