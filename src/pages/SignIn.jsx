@@ -1,13 +1,14 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react';
-const authURL = "http://localhost:8080/auth"
+import springApi from '../api';
+// const authURL = "http://localhost:8080/auth"
 
 const SignIn = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [signInStatus, setSignInStatus] = useState("")
 
-    function signIn(e) {
+    const signIn = async (e) => {
         e.preventDefault()
 
         let user = {
@@ -15,17 +16,26 @@ const SignIn = () => {
             password: password
         }
         
-        axios({
-            method: "post",
-            url: authURL,
-            auth: user
-        }).then((response) => {
-            localStorage.setItem("session-token", response.data)
+        // axios({
+        //     method: "post",
+        //     url: authURL,
+        //     auth: user
+        // }).then((response) => {
+        //     localStorage.setItem("session-token", response.data)
+        //     setSignInStatus("Access has been granted.")
+        // }).catch((response) => {
+        //     localStorage.setItem("session-token", "")
+        //     setSignInStatus("Access has not been granted.")
+        // })
+
+        try {
+            const { data } = await springApi.post("/auth", {}, { auth: user})
+            localStorage.setItem("session-token", data)
             setSignInStatus("Access has been granted.")
-        }).catch((response) => {
+        } catch (error) {
             localStorage.setItem("session-token", "")
             setSignInStatus("Access has not been granted.")
-        })
+        }
     }
 
     return <>
