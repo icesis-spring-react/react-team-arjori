@@ -1,0 +1,58 @@
+.sign-in-container {
+    margin: auto;
+    width: 35%;
+    height: 35%;
+
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.form-group {
+    padding-top: 0%;
+    padding-bottom: 12.5%;
+}
+
+.form-result {
+    padding-top: 15%;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+
+    width: 100%;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-left: 25%;
+
+    padding: 5%;
+    
+    width: 50%;
+    height: min-content;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: #007bff;
+    color: #fff;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

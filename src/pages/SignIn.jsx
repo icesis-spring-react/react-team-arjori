@@ -1,6 +1,8 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
 import springApi from '../api';
+import './SignIn.css'
+
 // const authURL = "http://localhost:8080/auth"
 
 const SignIn = () => {
@@ -38,26 +40,23 @@ const SignIn = () => {
         }
     }
 
-    return <>
+    return <div className='sign-in-container'>
         <h2>Welcome!</h2>
         <form onSubmit={signIn}>
-            <label>Username:</label> <br/>
-            <input type="text" name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+            <div className='form-group'>
+                <label>Enter your username:</label>
+                <input type="text" name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+            </div>
 
-            <br/><br/>
+            <div className='form-group'>
+                <label>Enter your password:</label>
+                <input type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+            </div>
 
-            <label>Password:</label> <br/>
-            <input type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-
-            <br/><br/>
-
-            <input type="submit" value={"Sign In!"}/>
-
-            <br/><br/>
-
-            <label>{signInStatus}</label>
+            <button>Sign In!</button>
+            <label className='form-result'>{signInStatus}</label>
         </form>
-    </>
+    </div>
 }
 
 export default SignIn
