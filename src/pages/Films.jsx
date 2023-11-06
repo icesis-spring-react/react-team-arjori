@@ -1,15 +1,15 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import FilmsList from "../components/FilmsList";
-import axios from "axios";
+import springApi from "../api";
 
-const baseURL = "http://localhost:8080/films";
+// const baseURL = "http://localhost:8080/films";
 
 const Films = () => {
     const [display, setDisplay] = useState("")
     const [filmSelected, setFilm] = useState({})
     const [films, setFilms] = useState([])
 
-    const listar = () => {
+    /* const listar = () => {
             const token = localStorage.token;
 
             const config = {
@@ -19,11 +19,21 @@ const Films = () => {
             axios.get(baseURL, config).then((response) => {
                 setFilms( response.data );
             });
-        }
+        } */
+        useEffect(() => {
+            const fetchFilms = async () => {
+                try {
+                    const { data } = await springApi.get("/films");
+                    setFilms(data);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+    
+            fetchFilms();
+          
+        }, [setFilms]);
         
-    React.useEffect(() => {
-        listar();
-    }, [])
 
     return <>
                 <h1>Films</h1>

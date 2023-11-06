@@ -10,6 +10,7 @@ import React from "react";
 
                             className={props.filmSelected != null && film === props.filmSelected?'selected':''}>
 
+                            Id: {film.id}<br/>
                             Title: {film.title} <br/>  
                             Director: {film.director} <br/>
                             <br/>
