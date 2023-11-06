@@ -1,12 +1,14 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
 import springApi from '../api';
+import { useNavigate } from 'react-router-dom';
 // const authURL = "http://localhost:8080/auth"
 
-const SignIn = () => {
+export const SignIn = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [signInStatus, setSignInStatus] = useState("")
+    const navigate = useNavigate()
 
     const signIn = async (e) => {
         e.preventDefault()
@@ -30,10 +32,11 @@ const SignIn = () => {
 
         try {
             const { data } = await springApi.post("/auth", {}, { auth: user})
-            localStorage.setItem("session-token", data)
+            localStorage.setItem("token", data)
             setSignInStatus("Access has been granted.")
+            navigate("/directors")
         } catch (error) {
-            localStorage.setItem("session-token", "")
+            localStorage.setItem("token", "")
             setSignInStatus("Access has not been granted.")
         }
     }
@@ -59,5 +62,3 @@ const SignIn = () => {
         </form>
     </>
 }
-
-export default SignIn
