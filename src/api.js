@@ -7,8 +7,9 @@ const springApi = axios.create({
 springApi.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
-    "session-token": localStorage.getItem("session-token"),
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
+
   return config;
 });
 
