@@ -3,26 +3,15 @@ import FilmsList from '../components/FilmsList';
 import AddFilm from '../components/AddFilm';
 import EditFilm from '../components/EditFilm';
 import DeleteFilm from '../components/DeleteFilm';
+import FilterByDirector from '../components/FilterFilmByDirector'
 import springApi from "../api";
-
-// const baseURL = "http://localhost:8080/films";
 
 export const Films = () => {
     const [display, setDisplay] = useState("")
     const [films, setFilms] = useState([])
 
     const refresh=()=>{  window.location.reload();}
-    /* const listar = () => {
-            const token = localStorage.token;
-
-            const config = {
-                headers: { Authorization: `Bearer ${token}` }
-            };
-
-            axios.get(baseURL, config).then((response) => {
-                setFilms( response.data );
-            });
-        } */
+   
         useEffect(() => {
             const fetchFilms = async () => {
                 try {
@@ -43,11 +32,12 @@ export const Films = () => {
                 <button onClick={() => setDisplay("Add")}>Add</button>
                 <button onClick={() => setDisplay("Edit")} >Edit</button>
                 <button onClick={() => setDisplay("Delete")}>Delete</button>
+                <button onClick={() => setDisplay("Filter")}>Filter by Director</button>
 
                 {display==="Add" && <AddFilm />}
-                {/* {display==="Editar" && <EditFilm  setFoundFilm={setFoundFilm}/>} */}
                 {display==="Edit" && <EditFilm  refresh={refresh}/>}
-                {display==="Delete" && <DeleteFilm   />}
+                {display==="Delete" && <DeleteFilm  refresh={refresh}/>}
+                {display==="Filter" && <FilterByDirector setFilms={setFilms} refresh={refresh}/>}
                 <hr />
                 <FilmsList films={films} />
                 
