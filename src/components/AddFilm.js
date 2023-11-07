@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import springApi from "../api";
 
-const AddStudent = (props) => {
+const AddFilm = () => {
 
     const [inputs, setInputs] = useState({});
     
@@ -77,4 +77,4 @@ const AddStudent = (props) => {
             </>;
   };
   
-  export default AddStudent;
+  export default AddFilm;
