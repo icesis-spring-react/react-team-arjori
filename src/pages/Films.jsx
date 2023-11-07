@@ -7,11 +7,11 @@ import springApi from "../api";
 
 // const baseURL = "http://localhost:8080/films";
 
-const Films = () => {
+const Films = (props) => {
     const [display, setDisplay] = useState("")
-    // const [filmSelected, setFilm] = useState({})
     const [films, setFilms] = useState([])
 
+    const refresh=()=>{  window.location.reload();}
     /* const listar = () => {
             const token = localStorage.token;
 
@@ -45,8 +45,9 @@ const Films = () => {
                 <button onClick={() => setDisplay("Delete")}>Delete</button>
 
                 {display==="Add" && <AddFilm />}
-                {display==="Editar" && <EditFilm  />}
-                {display==="Borrar" && <DeleteFilm   />}
+                {/* {display==="Editar" && <EditFilm  setFoundFilm={setFoundFilm}/>} */}
+                {display==="Edit" && <EditFilm  refresh={refresh}/>}
+                {display==="Delete" && <DeleteFilm   />}
                 <hr />
                 <FilmsList films={films} />
                 
