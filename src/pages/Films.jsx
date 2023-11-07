@@ -1,12 +1,15 @@
 import React, { useEffect, useState }  from 'react';
-import FilmsList from "../components/FilmsList";
+import FilmsList from '../components/FilmsList';
+import AddFilm from '../components/AddFilm';
+import EditFilm from '../components/EditFilm';
+import DeleteFilm from '../components/DeleteFilm';
 import springApi from "../api";
 
 // const baseURL = "http://localhost:8080/films";
 
 const Films = () => {
     const [display, setDisplay] = useState("")
-    const [filmSelected, setFilm] = useState({})
+    // const [filmSelected, setFilm] = useState({})
     const [films, setFilms] = useState([])
 
     /* const listar = () => {
@@ -37,15 +40,16 @@ const Films = () => {
 
     return <>
                 <h1>Films</h1>
-                <button onClick={() => setDisplay("Add")}>Adicionar</button>
-                <button onClick={() => setDisplay("Editar")} >Editar</button>
-                <button onClick={() => setDisplay("Borrar")}>Borrar</button>
+                <button onClick={() => setDisplay("Add")}>Add</button>
+                <button onClick={() => setDisplay("Edit")} >Edit</button>
+                <button onClick={() => setDisplay("Delete")}>Delete</button>
 
-                {/* {display==="Add" && <AddFilm listar={listar} />} */}
-                {/* {display==="Editar" && <EditStudent setStudent={setStudent} studentSelected={studentSelected} listar={listar}  />} */}
-                {/* {display==="Borrar" && <RemoveStudent studentSelected={studentSelected} listar={listar}  />} */}
+                {display==="Add" && <AddFilm />}
+                {display==="Editar" && <EditFilm  />}
+                {display==="Borrar" && <DeleteFilm   />}
                 <hr />
-                <FilmsList setFilm={setFilm} films={films} filmSelected={filmSelected} />
+                <FilmsList films={films} />
+                
             </>;
   }
   

@@ -4,12 +4,7 @@ import React from "react";
     return <><h1>Films List</h1>
                 <div>
                     {props.films.map( (film, key) =>
-                        <div 
-                            key={key}  id={'div_' + key}
-                            onClick={(e)=> {  props.setFilm(film) }} 
-
-                            className={props.filmSelected != null && film === props.filmSelected?'selected':''}>
-
+                        <div key={key}  id={'div_' + key}>
                             Id: {film.id}<br/>
                             Title: {film.title} <br/>  
                             Director: {film.director} <br/>
