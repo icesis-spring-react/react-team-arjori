@@ -51,7 +51,7 @@ export const SignIn = () => {
 					type="submit"
 					className="bg-sky-700 p-1 hover:bg-sky-800 focus:outline-none text-white"
 				>
-					Sing In
+					Sign In
 				</button>
 			</form>
 		</div>
