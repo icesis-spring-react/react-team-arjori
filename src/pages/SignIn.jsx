@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 export const SignIn = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [signInStatus, setSignInStatus] = useState("")
     const navigate = useNavigate()
 
     const signIn = async (e) => {
@@ -19,29 +18,42 @@ export const SignIn = () => {
         try {
             const { data } = await springApi.post("/auth", {}, { auth: user})
             localStorage.setItem("token", data)
-            setSignInStatus("Access has been granted.")
             navigate("/directors")
         } catch (error) {
             localStorage.setItem("token", "")
-            setSignInStatus("Access has not been granted.")
         }
     }
 
-    return <div className='sign-in-container'>
-        <h2>Welcome!</h2>
-        <form onSubmit={signIn}>
-            <div className='form-group'>
-                <label>Enter your username:</label>
-                <input type="text" name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
-            </div>
+	return (
+		<div className="bg-gray-500 space-y-4 shadow-xl p-4 rounded-md w-96 mx-auto items-center">
+			<h1 className="font-medium text-3xl text-white">Login</h1>
 
-            <div className='form-group'>
-                <label>Enter your password:</label>
-                <input type="password" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-            </div>
-
-            <button>Sign In!</button>
-            <label className='form-result'>{signInStatus}</label>
-        </form>
-    </div>
+			<form className="flex flex-col space-y-4" onSubmit={signIn}>
+				<input
+					type="text"
+					placeholder="Username"
+					className="p-1 ps-2 rounded focus:outline-none"
+					onChange={(e) => setUsername(e.target.value)}
+					name="username"
+					value={username}
+					required
+				/>
+				<input
+					type="password"
+					placeholder="Password"
+					className="p-1 ps-2 rounded focus:outline-none"
+					onChange={(e) => setPassword(e.target.value)}
+					name="password"
+					value={password}
+					required
+				/>
+				<button
+					type="submit"
+					className="bg-sky-700 p-1 hover:bg-sky-800 focus:outline-none text-white"
+				>
+					Sing In
+				</button>
+			</form>
+		</div>
+	);
 }
