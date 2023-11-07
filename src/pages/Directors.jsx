@@ -66,10 +66,13 @@ export const Directors = () => {
 				<h1 className="text-2xl font-bold">Directors</h1>
 			</div>
 
-			<div className="relative overflow-x-auto shadow-md w-64">
+			<div className="relative overflow-x-auto shadow-md w-96">
 				<table className="w-full text-sm text-center">
 					<thead className="text-x uppercase bg-gray-400">
 						<tr>
+							<th className="p-2">
+								Id
+							</th>
 							<th className="p-2">
 								Name
 							</th>
@@ -83,6 +86,9 @@ export const Directors = () => {
 						{directorsList.map((director) => {
 							return (
 								<tr className="border-b hover:bg-gray-300" key={director.id}>
+									<td className="p-2">
+										{director.id}
+									</td>
 									<td className="p-2">
 										<input
 											type="text"
@@ -104,6 +110,7 @@ export const Directors = () => {
 							);
 						})}
 						<tr className="border-b hover:bg-gray-300">
+							<td className="p-2"></td>
 							<td className="p-2">
 								<input type="text" className="w-full focus:outline-none" placeholder="Add new director" 
 									onChange={(e) => setNewDirector(e.target.value)} />
