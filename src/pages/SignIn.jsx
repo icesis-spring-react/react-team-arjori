@@ -18,7 +18,7 @@ export const SignIn = () => {
         try {
             const { data } = await springApi.post("/auth", {}, { auth: user})
             localStorage.setItem("token", data)
-            navigate("/directors")
+            navigate("/home")
         } catch (error) {
             localStorage.setItem("token", "")
         }

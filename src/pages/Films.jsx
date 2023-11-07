@@ -7,7 +7,7 @@ import springApi from "../api";
 
 // const baseURL = "http://localhost:8080/films";
 
-const Films = () => {
+export const Films = () => {
     const [display, setDisplay] = useState("")
     // const [filmSelected, setFilm] = useState({})
     const [films, setFilms] = useState([])
@@ -51,6 +51,4 @@ const Films = () => {
                 <FilmsList films={films} />
                 
             </>;
-  }
-  
-  export default Films;
+}
