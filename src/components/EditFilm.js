@@ -57,6 +57,8 @@ const EditFilm = (props) => {
         }
     }
 
+    const inputClass=`"border border-gray-300 rounded-md py-2 px-3 focus:ring focus:border-blue-300 my-10"`
+
     return <>
       <h2>Edit film</h2>
       <form onSubmit={getFilm}>
@@ -66,9 +68,10 @@ const EditFilm = (props) => {
         name="ident" 
         value={inputs.ident || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>  
-      <input type="submit" value="Get film" />
+      <input type="submit" value="Get film" className="bg-sky-700 p-1 hover:bg-sky-800 focus:outline-none text-white" />
       </form>
 
 
@@ -79,6 +82,7 @@ const EditFilm = (props) => {
         name="title" 
         value={inputs.title || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
 
@@ -88,6 +92,7 @@ const EditFilm = (props) => {
           name="genre" 
           value={inputs.genre || ""} 
           onChange={cambiar} required
+          className={inputClass}
         />
         </label>
 
@@ -97,6 +102,7 @@ const EditFilm = (props) => {
         name="director" 
         value={inputs.director || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
 
@@ -106,10 +112,11 @@ const EditFilm = (props) => {
         name="releaseDate" 
         value={inputs.releaseDate || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
         <br />
-        <input type="submit" value="Save film" />
+        <input type="submit" value="Save film" className="bg-sky-700 p-1 hover:bg-sky-800 focus:outline-none text-white"/>
     </form>
             </>;
   };

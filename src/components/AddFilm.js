@@ -27,12 +27,10 @@ const AddFilm = () => {
         } catch (error) {
             console.log(error);
         }
-        /* axios.post(baseURL, student).then((response) => {
-            console.log("Film added");
-            props.listar();    
-        }); */
+        
     }
 
+    const inputClass=`"border border-gray-300 rounded-md py-2 px-3 focus:ring focus:border-blue-300 my-10"`
     return <>
       <h2>Add film</h2>
       <form onSubmit={guardar}>
@@ -42,6 +40,7 @@ const AddFilm = () => {
         name="title" 
         value={inputs.title || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
 
@@ -51,6 +50,7 @@ const AddFilm = () => {
           name="genre" 
           value={inputs.genre || ""} 
           onChange={cambiar} required
+          className={inputClass}
         />
         </label>
 
@@ -60,6 +60,7 @@ const AddFilm = () => {
         name="director" 
         value={inputs.director || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
 
@@ -69,10 +70,11 @@ const AddFilm = () => {
         name="releaseDate" 
         value={inputs.releaseDate || ""} 
         onChange={cambiar} required
+        className={inputClass}
       /><br />
       </label>
         <br />
-        <input type="submit" value="Add film" />
+        <input type="submit" value="Add film" className="bg-sky-700 p-1 hover:bg-sky-800 focus:outline-none text-white"/>
     </form>
             </>;
   };
