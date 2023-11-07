@@ -12,17 +12,7 @@ export const Films = () => {
     const [films, setFilms] = useState([])
 
     const refresh=()=>{  window.location.reload();}
-    /* const listar = () => {
-            const token = localStorage.token;
-
-            const config = {
-                headers: { Authorization: `Bearer ${token}` }
-            };
-
-            axios.get(baseURL, config).then((response) => {
-                setFilms( response.data );
-            });
-        } */
+   
         useEffect(() => {
             const fetchFilms = async () => {
                 try {
@@ -47,7 +37,7 @@ export const Films = () => {
                 {display==="Add" && <AddFilm />}
                 {/* {display==="Editar" && <EditFilm  setFoundFilm={setFoundFilm}/>} */}
                 {display==="Edit" && <EditFilm  refresh={refresh}/>}
-                {display==="Delete" && <DeleteFilm   />}
+                {display==="Delete" && <DeleteFilm   refresh={refresh}/>}
                 <hr />
                 <FilmsList films={films} />
                 
